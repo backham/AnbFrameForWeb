@@ -6,26 +6,24 @@
 <div ng-app="rankApp">
 	<div ng-controller="rankController">
 		<h3>{{title}}</h3>
-<!-- 
-		<table>
-			<tr ng-repeat="x in names">
-				<td>{{ x.rankName }}</td>
-				<td>{{ x.rankCode }}</td>
-			</tr>
-		</table>
- -->
-  <p><strong>Page:</strong> {{tableParams.page()}}
-    <p><strong>Count per page:</strong> {{tableParams.count()}}
- 
- <table ng-table="tableParams" class="table ng-table-responsive">
-            <tr ng-repeat="rank in $data">
-                <td data-title="'Name'">
+
+ <table st-table="rowCollection" class="table table-striped">
+ 	<thead>
+ 		<tr>
+ 			<th>직급명</th>
+ 			<th>직급코드</th>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+            <tr ng-repeat="rank in rowCollection">
+                <td>
                     {{rank.rankName}}
                 </td>
-                <td data-title="'Age'">
+                <td>
                     {{rank.rankCode}}
                 </td>
             </tr>
+            </tbody>
         </table>
 
 	</div>

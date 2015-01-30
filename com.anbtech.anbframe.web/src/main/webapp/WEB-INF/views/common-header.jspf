@@ -8,14 +8,14 @@
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/resources/ng-table/ng-table.css">
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/resources/ajaxloader/ajaxloader.css">
-<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/css/Mng/userMng.css">
-<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/css/topmenu.css">
+<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/css/styles.css">
 
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/jquery.min.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/jquery.ajaxloader.1.5.0.min.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/angularjs/angular.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/angularjs/angular-route.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/ng-table/ng-table.js"></script>
+<script type="text/javascript"	src="${pageContext.request.contextPath }/resources/angular_module/smart-table.min.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/jquery.easyui.min.js"></script>
 <script type="text/javascript"	src="${pageContext.request.contextPath }/resources/common/common.js"></script>

@@ -1,5 +1,6 @@
 	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<script type="text/javascript"	src="${pageContext.request.contextPath }/js/usermng/userMng.js"></script>
+	<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/css/Mng/userMng.css">
 	<div id="mainBody" style="width:700px;">
 	  <div style="float:right; margin-bottom:5px;">		
 	  		<select class="easyui-combobox" name="state" style="width:100px;">
