@@ -8,12 +8,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.SaltSource;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.anbtech.anbframe.security.service.LoginService;
@@ -46,12 +46,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
             user = loginService.loadUserByUsername(username);
 
-            String hashedPassword = "";//passwordEncoder.encodePassword(password, saltSource.getSalt(user));
+            String hashedPassword = passwordEncoder.encode(password);
 
             logger.info("username : " + username + " / password : " + password + " / hash password : " + hashedPassword);
             logger.info("username : " + user.getUsername() + " / password : " + user.getPassword());
 
-            if (!hashedPassword.equals(user.getPassword())) throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
+           // if (!hashedPassword.equals(user.getPassword())) throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
+            if (!passwordEncoder.matches(password, user.getPassword())) throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
 
             authorities = user.getAuthorities();
         } catch(UsernameNotFoundException e) {

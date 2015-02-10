@@ -15,49 +15,53 @@
     http://www.springframework.org/schema/security/spring-security.xsd">
  
 
-    <http auto-config="true" use-expressions="true" access-denied-page="/denied">
-
-    <form-login
-    login-page="/signin"
-    username-parameter="username" 
-    password-parameter="password"
-    login-processing-url="/loginprocess.do"
-    authentication-success-handler-ref="signinSuccessHandler"
-    authentication-failure-handler-ref="signinFailureHandler"
-    default-target-url="/mypage"
-    always-use-default-target="false"
-    />
-
-    <logout
-    invalidate-session="true"
-    logout-success-url="/signin"
-    logout-url="/signout" />
-
+    
+ 	<context:component-scan base-package="com.anbtech.anbframe.security" use-default-filters="false">
+    	 <context:include-filter expression="org.springframework.stereotype.Service" type="annotation" />
+    </context:component-scan>
+ 
+    <http realm="Contacts Realm" >
+		<intercept-url pattern="/security/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/**" access="ROLE_USER"/>
+	    <form-login
+		    login-page="/security/login.do"
+		    username-parameter="username" 
+		    password-parameter="password"
+		    login-processing-url="/security/loginprocess.do"
+		    default-target-url="/index.do"
+		    always-use-default-target="true"
+	    />
+	    <logout
+		    invalidate-session="true"
+		    logout-success-url="/security/login.do"
+		    logout-url="/security/logout.do" />
+	    
     </http>
 
+	
+	<beans:bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+	    <beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	    <beans:property name="url" value="jdbc:oracle:thin:@14.63.213.138:1521:XE"/>
+	    <beans:property name="username" value="anbdev"/>
+	    <beans:property name="password" value="dpdldosq "/>
+	</beans:bean>
+	
+	<beans:bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
     <beans:bean id="signinSuccessHandler" class="com.anbtech.anbframe.security.SigninSuccessHandler" />
     <beans:bean id="signinFailureHandler" class="com.anbtech.anbframe.security.SigninFailureHandler">
         <beans:property name="defaultFailureUrl" value="/signin?error=true" />
     </beans:bean>
+    
+    <beans:bean id="loginDAOService" class="com.anbtech.anbframe.security.service.LoginDAOService" />
     <beans:bean id="loginService" class="com.anbtech.anbframe.security.service.LoginService" />
 	<beans:bean id="customAuthenticationProvider" class="com.anbtech.anbframe.security.CustomAuthenticationProvider" />
 	
-    <beans:bean id="encoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" />
-    <beans:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
-        <beans:property name="userPropertyToUse" value="username" />
-    </beans:bean>
-
+   <beans:bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
    <authentication-manager alias="authenticationManager">
 	    <authentication-provider ref="customAuthenticationProvider" />
 	    <authentication-provider user-service-ref="loginService">
-	        <password-encoder ref="encoder">
-	            <salt-source ref="saltSource" />
-	        </password-encoder>
+	        <password-encoder ref="encoder" />
 	    </authentication-provider>
 	</authentication-manager>
 	
-	<context:component-scan base-package="com.anbtech.anbframe.security" use-default-filters="false">
-    	<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation" />
-    </context:component-scan>
-
 </beans:beans>

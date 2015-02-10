@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -23,19 +24,27 @@ import com.anbtech.anbframe.security.service.domain.User;
 public class LoginService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
 
+    @Autowired
+    LoginDAOService loginDAOService;
   
     public User loadUserByUsername(final String username) throws UsernameNotFoundException {
 
         logger.info("username : " + username);
 
         // 회원 정보 dao 에서 데이터를 읽어 옴.
-
+        
         // test 값을 암호화함.
-        String password = "aabcb987e4b425751e210413562e78f776de6285";
+        //String password = "aabcb987e4b425751e210413562e78f776de6285";
 
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        //user.setPassword(password);
+        try {
+			user = loginDAOService.getUserInfo(username);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         Role role = new Role();
         role.setName("ROLE_USER");

@@ -1,18 +1,16 @@
 package com.anbtech.anbframe.usermng;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.anbtech.anbframe.anbweb.vo.UserMngVO;
 import com.anbtech.anbframe.usermng.service.UserMngDAOService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,10 +24,17 @@ public class UserMngTest {
 	
 	@Test
 	public void testName() throws Exception {
-		UserMngVO param = new UserMngVO();
-		List list = dao.getListUser(param);
-		LOG.info("[총 직원은] : {} 명입니다.", list.size());		
-		assertNotNull(list);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String password = "koala";
+        String encoded = encoder.encode(password);
+        String encoded2 = encoder.encode(password);
+        boolean isMatch = encoder.matches(password, encoded);
+        if(isMatch) System.out.println("매치");
+        else System.out.println("no 매치");
+        assertTrue(encoded2 != encoded);
+
+        System.out.println(encoded);
+        System.out.println(encoded2);
 	}
 	
 }

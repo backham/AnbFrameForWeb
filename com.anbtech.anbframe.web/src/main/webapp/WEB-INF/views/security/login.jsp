@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Custom TextBox - jQuery EasyUI Demo</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/themes/icon.css">
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/resources/themes/color.css">
@@ -14,8 +13,6 @@
 
 </head>
 <body>
-    <h2>Custom TextBox</h2>
-    <p>This example shows how to custom a login form.</p>
     <div style="margin:20px 0;"></div>
     <div class="easyui-panel" title="Login to system" style="width:400px;padding:30px 70px 20px 70px">
     <form id="loginForm" action="loginprocess.do" method="post">

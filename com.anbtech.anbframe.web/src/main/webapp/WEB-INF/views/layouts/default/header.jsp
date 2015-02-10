@@ -11,7 +11,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="${pageContext.request.contextPath }/">에이앤비개발센터</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/">에이앤비개발센터</a><a href="${pageContext.request.contextPath }/security/logout.do">.</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
