@@ -20,9 +20,13 @@
     	 <context:include-filter expression="org.springframework.stereotype.Service" type="annotation" />
     </context:component-scan>
  
-    <http realm="Contacts Realm" >
-		<intercept-url pattern="/security/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<intercept-url pattern="/**" access="ROLE_USER"/>
+ 	<http security="none" pattern="/resources/**"/>
+ 	<http security="none" pattern="/js/**"/>
+    <http use-expressions="true" >
+     	<!-- access denied page -->
+        <access-denied-handler error-page="/403" />
+		<intercept-url pattern="/security/login*" access="permitAll"/>
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
 	    <form-login
 		    login-page="/security/login.do"
 		    username-parameter="username" 
