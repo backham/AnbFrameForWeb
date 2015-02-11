@@ -1,37 +1,84 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/themes/icon.css">
-<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/resources/themes/color.css">
-<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/css/Mng/userMng.css">
-<script type="text/javascript"	src="${pageContext.request.contextPath }/resources/jquery.min.js"></script>
-<script type="text/javascript"	src="${pageContext.request.contextPath }/resources/jquery.easyui.min.js"></script>
-<script type="text/javascript"	src="${pageContext.request.contextPath }/resources/common/common.js"></script>
-<script type="text/javascript"	src="${pageContext.request.contextPath }/js/security/login.js"></script>
 
-</head>
-<body>
-    <div style="margin:20px 0;"></div>
-    <div class="easyui-panel" title="Login to system" style="width:400px;padding:30px 70px 20px 70px">
-    <form id="loginForm" action="loginprocess.do" method="post">
-        <div style="margin-bottom:10px">
-            <input class="easyui-textbox" name="username" style="width:100%;height:40px;padding:12px" data-options="prompt:'Username',iconCls:'icon-man',iconWidth:38">
-        </div>
-        <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="password" type="password" style="width:100%;height:40px;padding:12px" data-options="prompt:'Password',iconCls:'icon-lock',iconWidth:38">
-        </div>
-        <div style="margin-bottom:20px">
-            <input type="checkbox" checked="checked">
-            <span>Remember me</span>
-        </div>
-        <div>
-            <a href="javascript:login.submit();" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:100%;">
-                <span style="font-size:14px;">Login</span>
-            </a>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Signin Template for Bootstrap</title>
+
+	<script type="text/javascript"	src="${pageContext.request.contextPath }/resources/jquery.min.js"></script>
+	<script type="text/javascript"	src="${pageContext.request.contextPath }/resources/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript"	src="${pageContext.request.contextPath }/js/security/login.js"></script>
+
+
+    <!-- Custom styles for this template -->
+    <style type="text/css">
+    body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form id="loginForm" class="form-signin" action="loginprocess.do" method="POST">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <label class="checkbox" style="padding-left: 20px">
+          	<input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="login.submit();">Sign in</button>
       </form>
-    </div>
-</body>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
 </html>

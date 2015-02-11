@@ -32,6 +32,7 @@
 		    username-parameter="username" 
 		    password-parameter="password"
 		    login-processing-url="/security/loginprocess.do"
+		    authentication-failure-url="/security/login.do?result=fail"
 		    default-target-url="/index.do"
 		    always-use-default-target="true"
 	    />

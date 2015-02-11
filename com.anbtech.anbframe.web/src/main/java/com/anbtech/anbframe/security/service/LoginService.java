@@ -38,13 +38,7 @@ public class LoginService implements UserDetailsService {
 
         User user = new User();
         user.setUsername(username);
-        //user.setPassword(password);
-        try {
-			user = loginDAOService.getUserInfo(username);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		user = loginDAOService.getUserInfo(username);
 
         Role role = new Role();
         role.setName("ROLE_USER");
